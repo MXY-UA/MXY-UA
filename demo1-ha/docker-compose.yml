@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+
+  py_web1:
+    container_name: web1
+    build: ./Web1
+    expose:
+      - 8000
+    networks:
+      my_net:
+        ipv4_address: 172.20.0.11
+
+  py_web2:
+    container_name: web2
+    build: ./Web2
+    expose:
+      - 8000
+    networks:
+      my_net:
+        ipv4_address: 172.20.0.12
+
+  flask_web1:
+    container_name: flask1
+    build: ./Web3F
+    expose:
+      - 80
+    networks:
+      my_net:
+        ipv4_address: 172.20.0.13
+
+  flask_web2:
+    container_name: flask2
+    image: "jazzdd/alpine-flask:latest"
+    volumes:
+      - ./Web4F:/app
+    expose:
+      - 80
+    networks:
+      my_net:
+        ipv4_address: 172.20.0.14
+
+  haproxy:
+    container_name: haproxy
+    build: ./hap
+    ports:
+      - 80:80
+      - 8080:8080
+    networks:
+      my_net:
+        ipv4_address: 172.20.0.20
+
+networks:
+  my_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
