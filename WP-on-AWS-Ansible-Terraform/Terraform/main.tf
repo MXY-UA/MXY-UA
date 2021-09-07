@@ -1,33 +1,3 @@
-Skip to content
-Why GitHub? 
-Team
-Enterprise
-Explore 
-Marketplace
-Pricing 
-Search
-Sign in
-Sign up
-zaval13
-/
-Wordpress-on-AWS-Terraform-Ansible-
-00
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Wordpress-on-AWS-Terraform-Ansible-/terraform/aws.tf
-
-Valentyn Zakharov files added
-Latest commit 6d9c4b0 on Jul 14
- History
- 0 contributors
-57 lines (47 sloc)  1.05 KB
-  
 provider "aws" {
 region = "us-east-2"
 }
